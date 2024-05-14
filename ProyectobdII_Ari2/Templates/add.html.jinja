@@ -1,0 +1,66 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+<div class="add">
+    <h1> {% block title %}  {% endblock %} </h1>
+        <form method="POST" Content-Type='application/json'>
+            <div>
+                <label for="nombre"> Name </label><br>
+                <input type="text" name="name" 
+                placeholder="Name"
+                value="{{ request.form['name'] }}">
+                <br>
+            </div> 
+
+            <div>
+                <label for="lastname"> Last name </label><br>
+                <input type="text" name="lastname" 
+                placeholder="Lastname"
+                value="{{ request.form['lastname'] }}">
+                <br>
+            </div>
+
+            <div>
+                <label for="card"> Cedula </label><br>
+                <input type="number" name="card" 
+                placeholder="Id"
+                value="{{ request.form['card'] }}">
+                <br>
+            </div>
+
+            <div>
+                <label for="subject"> Name of the Subject </label><br>
+                <input type="text" name="subject" 
+                placeholder="Subject"
+                value="{{ request.form['subject'] }}">
+                <br>
+            </div>
+
+            <div>
+                <label for="objective"> Objective of the subject </label><br>
+                <input type="text" name="objective" 
+                placeholder="Objective of the subject"
+                value="{{ request.form['objective'] }}">
+                <br>
+            </div>
+
+            <div>
+                <label for="duration"> Total duration </label><br>
+                <input type="number" name="duration" 
+                placeholder="Total Duration"
+                value="{{ request.form['duration'] }}">
+                <br>
+            </div>
+
+            <div>
+                <label for="score"> Minimum Score </label><br>
+                <input type="number" name="score" 
+                placeholder="Minimum score"
+                value="{{ request.form['score'] }}">
+                <br>
+            </div>
+             
+            <input type="submit" value="Submit">
+        </form>
+</div>
+{% endblock %}
