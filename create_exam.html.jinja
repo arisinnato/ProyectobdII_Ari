@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css"/>
+    <title>Crear Examen</title>
+</head>
+<body>
+    <h1 class="titulo">Crear Examen</h1>
+    <form class="formulario" method="POST" action="/crear_examen">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
+
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
+        <select id="categoria" name="categoria">
+            {% for categoria in categorias %}
+                <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="tipo_muestra">Tipo de Muestra:</label>
+        <input type="text" id="tipo_muestra" name="tipo_muestra" required><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required><br>
+
+        <label for="indicaciones">Indicaciones:</label><br>
+        {% for indicacion in indicaciones %}
+            <input type="checkbox" id="indicaciones" name="indicaciones" value="{{ indicacion.nombre }}">
+            <label for="indicaciones">{{ indicacion.nombre }}</label><br>
+        {% endfor %}
+
+        <input type="submit" value="Crear Examen">
+    </form>
+</body>
+</html>

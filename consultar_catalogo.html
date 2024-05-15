@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultar Catálogo</title>
+</head>
+<body>
+    <h1>Consultar Catálogo</h1>
+    <form method="GET" action="/consultar_catalogo">
+        <label for="filtro_categoria">Filtrar por Categoría:</label>
+        <select id="filtro_categoria" name="filtro_categoria">
+            <option value="">Todas</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrar">
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        {% for examen in examenes %}
+            <tr>
+                <td>{{ examen.codigo }}</td>
+                <td>{{ examen.nombre }}</td>
+                <td>{{ examen.precio }}</td>
+                <td>
+                    <a href="/consultar_examen/{{ examen._id }}">Consultar</a>
+                    <a href="/modificar_examen/{{ examen._id }}">Modificar</a>
+                    <form method="POST" action="/eliminar_examen/{{ examen._id }}">
+                        <input type="submit" value="Eliminar">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
